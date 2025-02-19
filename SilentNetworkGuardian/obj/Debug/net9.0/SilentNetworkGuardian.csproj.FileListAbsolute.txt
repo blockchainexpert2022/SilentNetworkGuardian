@@ -1,0 +1,14 @@
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\bin\Debug\net9.0\SilentNetworkGuardian.exe
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\bin\Debug\net9.0\SilentNetworkGuardian.deps.json
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\bin\Debug\net9.0\SilentNetworkGuardian.runtimeconfig.json
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\bin\Debug\net9.0\SilentNetworkGuardian.dll
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\bin\Debug\net9.0\SilentNetworkGuardian.pdb
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.AssemblyInfoInputs.cache
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.AssemblyInfo.cs
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.csproj.CoreCompileInputs.cache
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.dll
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\refint\SilentNetworkGuardian.dll
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.pdb
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.genruntimeconfig.cache
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\ref\SilentNetworkGuardian.dll
