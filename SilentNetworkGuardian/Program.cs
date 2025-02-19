@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Timers;
 using Timer = System.Timers.Timer;
@@ -48,7 +49,7 @@ class Program
         ProcessStartInfo psi = new ProcessStartInfo
         {
             FileName = "netstat",
-            Arguments = "-n",
+            Arguments = "-an",
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true
@@ -85,6 +86,11 @@ class Program
             string localAddress = match.Groups[2].Value;
             string remoteAddress = match.Groups[3].Value;
             string state = match.Groups[4].Value;
+
+            if (state == "LISTENING")
+            {
+                return $"{protocol} {localAddress} (INBOUND)";
+            }
             return $"{protocol} {localAddress} -> {remoteAddress} ({state})";
         }
         return null;
@@ -98,7 +104,7 @@ class Program
             if (match.Success)
             {
                 string ipAddress = match.Groups[1].Value.Split(':')[0];
-                return ExecuteNsLookup(ipAddress);
+                return GetHostName(ipAddress);
             }
         }
         catch (Exception)
@@ -108,32 +114,16 @@ class Program
         return "Non résolu";
     }
 
-    static string ExecuteNsLookup(string ipAddress)
+    static string GetHostName(string ipAddress)
     {
         try
         {
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                FileName = "nslookup",
-                Arguments = ipAddress,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            using (Process process = Process.Start(psi))
-            {
-                using (System.IO.StreamReader reader = process.StandardOutput)
-                {
-                    string output = reader.ReadToEnd();
-                    var match = Regex.Match(output, @"Nom :\s+(\S+)");
-                    return match.Success ? match.Groups[1].Value : "Non résolu";
-                }
-            }
+            IPHostEntry hostEntry = Dns.GetHostEntry(ipAddress);
+            return hostEntry.HostName;
         }
         catch
         {
-            return "Erreur NsLookup";
+            return "Non résolu";
         }
     }
 }

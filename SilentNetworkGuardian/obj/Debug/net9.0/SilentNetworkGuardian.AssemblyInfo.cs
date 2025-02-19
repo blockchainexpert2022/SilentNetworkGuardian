@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SilentNetworkGuardian")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3260fcbc68e1d3f0fc0510c82d04f49a9d218197")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72fa5593ba671771f68ab8df712e91a26e04dad9")]
 [assembly: System.Reflection.AssemblyProductAttribute("SilentNetworkGuardian")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SilentNetworkGuardian")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
