@@ -31,6 +31,7 @@ class Program
         foreach (var conn in newConnections)
         {
             Console.WriteLine($"[Nouvelle Connexion] {conn}");
+            ResolveDns(conn);
         }
 
         foreach (var conn in closedConnections)
@@ -87,5 +88,52 @@ class Program
             return $"{protocol} {localAddress} -> {remoteAddress} ({state})";
         }
         return null;
+    }
+
+    static void ResolveDns(string connection)
+    {
+        try
+        {
+            var match = Regex.Match(connection, @"->\s+(\S+)");
+            if (match.Success)
+            {
+                string ipAddress = match.Groups[1].Value.Split(':')[0];
+                string hostName = ExecuteNsLookup(ipAddress);
+                Console.WriteLine($"Résolution DNS : {ipAddress} -> {hostName}");
+            }
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Impossible de résoudre le DNS.");
+        }
+    }
+
+    static string ExecuteNsLookup(string ipAddress)
+    {
+        try
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "nslookup",
+                Arguments = ipAddress,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using (Process process = Process.Start(psi))
+            {
+                using (System.IO.StreamReader reader = process.StandardOutput)
+                {
+                    string output = reader.ReadToEnd();
+                    var match = Regex.Match(output, @"Nom :\s+(\S+)");
+                    return match.Success ? match.Groups[1].Value : "Non résolu";
+                }
+            }
+        }
+        catch
+        {
+            return "Erreur NsLookup";
+        }
     }
 }

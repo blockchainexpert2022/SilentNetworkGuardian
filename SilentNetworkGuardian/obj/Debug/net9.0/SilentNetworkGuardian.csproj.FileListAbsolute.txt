@@ -12,3 +12,4 @@ C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGua
 C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.pdb
 C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.genruntimeconfig.cache
 C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\ref\SilentNetworkGuardian.dll
+C:\Users\WDAGUtilityAccount\RiderProjects\SilentNetworkGuardian\SilentNetworkGuardian\obj\Debug\net9.0\SilentNetworkGuardian.sourcelink.json
