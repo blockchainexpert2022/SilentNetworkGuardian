@@ -10,6 +10,7 @@ using Timer = System.Timers.Timer;
 class Program
 {
     static HashSet<string> knownConnections = new HashSet<string>();
+    static Dictionary<string, string> resolvedIPs = new Dictionary<string, string>(); // Cache des résolutions DNS
     static Timer timer;
 
     static void Main()
@@ -104,7 +105,17 @@ class Program
             if (match.Success)
             {
                 string ipAddress = match.Groups[1].Value.Split(':')[0];
-                return GetHostName(ipAddress);
+
+                // Vérifier si l'IP est déjà résolue dans le cache
+                if (resolvedIPs.ContainsKey(ipAddress))
+                {
+                    return resolvedIPs[ipAddress];
+                }
+
+                // Sinon, résoudre et stocker dans le cache
+                string hostName = GetHostName(ipAddress);
+                resolvedIPs[ipAddress] = hostName;
+                return hostName;
             }
         }
         catch (Exception)
