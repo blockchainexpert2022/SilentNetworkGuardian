@@ -30,8 +30,8 @@ class Program
 
         foreach (var conn in newConnections)
         {
-            Console.WriteLine($"[Nouvelle Connexion] {conn}");
-            ResolveDns(conn);
+            string resolvedDns = ResolveDns(conn);
+            Console.WriteLine($"[Nouvelle Connexion] {conn} | {resolvedDns}");
         }
 
         foreach (var conn in closedConnections)
@@ -90,7 +90,7 @@ class Program
         return null;
     }
 
-    static void ResolveDns(string connection)
+    static string ResolveDns(string connection)
     {
         try
         {
@@ -98,14 +98,14 @@ class Program
             if (match.Success)
             {
                 string ipAddress = match.Groups[1].Value.Split(':')[0];
-                string hostName = ExecuteNsLookup(ipAddress);
-                Console.WriteLine($"Résolution DNS : {ipAddress} -> {hostName}");
+                return ExecuteNsLookup(ipAddress);
             }
         }
         catch (Exception)
         {
-            Console.WriteLine("Impossible de résoudre le DNS.");
+            return "Impossible de résoudre le DNS.";
         }
+        return "Non résolu";
     }
 
     static string ExecuteNsLookup(string ipAddress)
