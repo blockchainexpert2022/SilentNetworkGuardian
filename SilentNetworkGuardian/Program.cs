@@ -50,7 +50,7 @@ class Program
         ProcessStartInfo psi = new ProcessStartInfo
         {
             FileName = "netstat",
-            Arguments = "-an",
+            Arguments = "-ano",
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true
@@ -80,21 +80,37 @@ class Program
 
     static string ParseConnection(string line)
     {
-        var match = Regex.Match(line, @"(TCP|UDP)\s+(\S+)\s+(\S+)\s+(\S+)");
+        var match = Regex.Match(line, @"(TCP|UDP)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+)");
         if (match.Success)
         {
             string protocol = match.Groups[1].Value;
             string localAddress = match.Groups[2].Value;
             string remoteAddress = match.Groups[3].Value;
             string state = match.Groups[4].Value;
+            int pid = int.Parse(match.Groups[5].Value);
+
+            string processName = GetProcessNameByPid(pid);
 
             if (state == "LISTENING")
             {
-                return $"{protocol} {localAddress} (INBOUND)";
+                return $"{protocol} {localAddress} (INBOUND) | Process: {processName} (PID: {pid})";
             }
-            return $"{protocol} {localAddress} -> {remoteAddress} ({state})";
+            return $"{protocol} {localAddress} -> {remoteAddress} ({state}) | Process: {processName} (PID: {pid})";
         }
         return null;
+    }
+
+    static string GetProcessNameByPid(int pid)
+    {
+        try
+        {
+            Process proc = Process.GetProcessById(pid);
+            return proc.ProcessName;
+        }
+        catch
+        {
+            return "Inconnu";
+        }
     }
 
     static string ResolveDns(string connection)
